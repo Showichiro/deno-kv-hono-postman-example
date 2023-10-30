@@ -98,10 +98,11 @@ const badRequest: Error = {
 
 const notFound: Error = {
   message: "Not Found",
-};
+} as const;
+
 const internalServerError: Error = {
   message: "Internal Server Error",
-};
+} as const;
 
 type PutUserRequest = Partial<User>;
 
