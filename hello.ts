@@ -2,6 +2,15 @@
 import { Hono, validator } from "https://deno.land/x/hono@v3.9.0/mod.ts";
 import { monotonicFactory } from "https://deno.land/x/ulid@v0.3.0/mod.ts";
 
+// drop table
+try {
+  await Deno.remove("kv.sqlite");
+} catch (err) {
+  if (!(err instanceof Deno.errors.NotFound)) {
+    throw err;
+  }
+}
+
 const ulid = monotonicFactory();
 
 const kv = await Deno.openKv("kv.sqlite");
@@ -57,15 +66,6 @@ const deleteUser = async (id: string) => {
   await kv.delete(key);
   return true;
 };
-
-// drop table
-try {
-  await Deno.remove("kv.sqlite");
-} catch (err) {
-  if (!(err instanceof Deno.errors.NotFound)) {
-    throw err;
-  }
-}
 
 // insert initial data
 await addUser({
