@@ -1,6 +1,12 @@
 {
   "tasks": {
-    "dev": "deno run -A --unstable hello.ts"
+    "dev": "deno run -A --unstable hello.ts",
+    "test": "deno test -A --unstable"
   },
-  "lock": false
+  "lock": false,
+  "imports": {
+    "hono": "https://deno.land/x/hono@v3.9.0/mod.ts",
+    "ulid": "https://deno.land/x/ulid@v0.3.0/mod.ts",
+    "assert": "https://deno.land/std@0.204.0/assert/mod.ts"
+  }
 }

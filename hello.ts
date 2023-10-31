@@ -1,6 +1,6 @@
 /// <reference lib="deno.unstable" />
-import { Hono, validator } from "https://deno.land/x/hono@v3.9.0/mod.ts";
-import { monotonicFactory } from "https://deno.land/x/ulid@v0.3.0/mod.ts";
+import { Hono, validator } from "hono";
+import { monotonicFactory } from "ulid";
 
 // drop table
 try {
@@ -107,11 +107,13 @@ const internalServerError: Error = {
 type PutUserRequest = Partial<User>;
 
 const isPutUserRequest = (val: unknown): val is PutUserRequest => {
-  return typeof val === "object";
+  return typeof val === "object" && !!val &&
+    (!("name" in val) || typeof val.name === "string") &&
+    (!("age" in val) || typeof val.age === "number");
 };
 
 // server
-const app = new Hono();
+export const app = new Hono();
 
 app.get(
   "/users",
