@@ -113,7 +113,7 @@ const isPutUserRequest = (val: unknown): val is PutUserRequest => {
 };
 
 // server
-export const app = new Hono();
+const app = new Hono();
 
 app.get(
   "/users",
@@ -159,3 +159,5 @@ app.get(
 );
 
 Deno.serve(app.fetch);
+
+export default app;

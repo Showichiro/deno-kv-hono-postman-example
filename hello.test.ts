@@ -1,4 +1,4 @@
-import { app } from "./hello.ts";
+import app from "./hello.ts";
 import { assert, assertEquals, assertInstanceOf } from "assert";
 
 type User = { id: string; name: string; age: number };
