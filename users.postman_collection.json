@@ -22,7 +22,7 @@
               "                type: \"string\"\r",
               "            },\r",
               "            id: {\r",
-              "                type: \"number\"\r",
+              "                type: \"string\"\r",
               "            },\r",
               "            age: {\r",
               "                type: \"number\"\r",
